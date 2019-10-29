@@ -23,6 +23,10 @@ class App extends React.Component {
       temp_max: undefined,
       temp_min: undefined,
       description: '',
+      pressure: '',
+      wind: '',
+      sunrise: '',
+      sunset: '',
       error: false
     };
     //setting icons for our app.
@@ -36,11 +40,22 @@ class App extends React.Component {
       Clouds: 'wi-day-fog'
     };
   }
+  calcRise(sunrise) {
+    const sunriseTime = new Date(sunrise * 1000).toLocaleTimeString();
+    console.log({ sunriseTime });
+    return sunriseTime;
+  }
+  calcSet(sunset) {
+    const sunsetTime = new Date(sunset * 1000).toLocaleTimeString();
+    console.log({ sunsetTime });
+    return sunsetTime;
+  }
   //changing F to celsius.
   calcCelsius(temp) {
     let cell = Math.floor(temp - 273.15);
     return cell;
   }
+
   //Specific parrameters to set corect icon for our app.
 
   //nesting needed data to link for our app.
@@ -71,6 +86,7 @@ class App extends React.Component {
         this.setState({ icon: this.weatherIcon.Clouds });
     }
   }
+
   getWeather = async e => {
     e.preventDefault();
 
@@ -88,6 +104,10 @@ class App extends React.Component {
         celsius: this.calcCelsius(response.main.temp),
         temp_max: this.calcCelsius(response.main.temp_max),
         temp_min: this.calcCelsius(response.main.temp_min),
+        pressure: response.main.pressure,
+        wind: response.wind.speed,
+        sunrise: this.calcRise(response.sys.sunrise),
+        sunset: this.calcSet(response.sys.sunset),
         description: response.weather[0].main
       });
       this.get_WeatherIcon(this.weatherIcon, response.weather[0].id);
@@ -107,6 +127,10 @@ class App extends React.Component {
           temp_celsius={this.state.celsius}
           temp_max={this.state.temp_max}
           temp_min={this.state.temp_min}
+          pressure={this.state.pressure}
+          wind={this.state.wind}
+          sunrise={this.state.sunrise}
+          sunset={this.state.sunset}
           description={this.state.description}
           weatherIcon={this.state.icon}
         />
