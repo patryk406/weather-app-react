@@ -28,6 +28,8 @@ class App extends React.Component {
       sunrise: "",
       sunset: "",
       tips: "",
+      timezone: "",
+      localTime: "",
       error: false
     };
     //setting icons for our app.
@@ -43,14 +45,23 @@ class App extends React.Component {
   }
   calcRise(sunrise) {
     const sunriseTime = new Date(sunrise * 1000).toLocaleTimeString();
-    console.log({ sunriseTime });
     return sunriseTime;
   }
   calcSet(sunset) {
     const sunsetTime = new Date(sunset * 1000).toLocaleTimeString();
-    console.log({ sunsetTime });
     return sunsetTime;
   }
+  //Calculating timeZone
+  calcZone(timezone) {
+    const zoneValue = (timezone / 3600).toLocaleString();
+    return zoneValue;
+  }
+  //Uploading Local time
+  calcLocal() {
+    let currentTime = new Date().toLocaleTimeString();
+    return currentTime;
+  }
+
   //changing F to celsius.
   calcCelsius(temp) {
     let cell = Math.floor(temp - 273.15);
@@ -162,6 +173,8 @@ class App extends React.Component {
         wind: response.wind.speed,
         sunrise: this.calcRise(response.sys.sunrise),
         sunset: this.calcSet(response.sys.sunset),
+        timezone: this.calcZone(response.timezone),
+        localTime: this.calcLocal(),
         description: response.weather[0].main
       });
       this.get_WeatherIcon(this.weatherIcon, response.weather[0].id);

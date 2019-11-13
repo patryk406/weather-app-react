@@ -8,3 +8,23 @@
   font-size: 18px;
   color: #f39c12;
 }
+.container h1,
+.container h3,
+.container h4,
+.container h5 {
+  margin-bottom: 0px !important;
+}
+.cards {
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+footer {
+  padding: 1rem;
+  position: relative;
+}
+.providers {
+  display: flex;
+  justify-content: space-around;
+  position: absolute;
+  animation: slide 2s linear;
+}

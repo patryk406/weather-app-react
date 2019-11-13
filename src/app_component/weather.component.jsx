@@ -2,12 +2,12 @@ import React from "react";
 import "./weather.style.css";
 const Weather = props => {
   return (
-    <div className="container">
+    <div className=" container">
       <div className="cards pt-4">
         <h1>{props.city}</h1>
         <h5 className="icon_tip py-4 d-flex">
           <i className={`wi ${props.weatherIcon} display-1`}></i>
-          <p className="tip col-6">{props.tips}</p>
+          {tips(props.tips)}
         </h5>
 
         {props.temp_celsius ? (
@@ -18,11 +18,43 @@ const Weather = props => {
         {pressWind(props.pressure, props.wind)}
         {riseSet(props.sunrise, props.sunset)}
         <h4 className="py-3">{props.description}</h4>
+        <div className="col-12">{footer(props.city)}</div>
       </div>
     </div>
   );
 };
-
+function tips(tips) {
+  if (tips) {
+    return (
+      <p className="tip col-6">
+        <span>&rdquo;</span>
+        {tips}
+        <span>&bdquo;</span>
+      </p>
+    );
+  }
+}
+function footer(city) {
+  if (city) {
+    return (
+      <footer>
+        <h5>
+          <p>Welcome in {city} Weather Center !</p>
+          <div className="providers">
+            <p className="left">
+              App powered by
+              <a href="https://reactjs.org/"> REACT </a>
+            </p>
+            <p className="right">
+              All data provided by
+              <a href="https://openweathermap.org/"> WeatherMap </a>
+            </p>
+          </div>
+        </h5>
+      </footer>
+    );
+  }
+}
 function riseSet(sunrise, sunset) {
   if (sunrise && sunset) {
     return (
