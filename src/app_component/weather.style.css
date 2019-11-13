@@ -1,0 +1,10 @@
+.icon_tip {
+  justify-content: space-evenly;
+  align-items: center;
+  width: 100%;
+}
+.tip {
+  font-style: sans-serif;
+  font-size: 18px;
+  color: #f39c12;
+}
