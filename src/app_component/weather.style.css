@@ -3,10 +3,14 @@
   align-items: center;
   width: 100%;
 }
-.tip {
-  font-style: sans-serif;
+.tip p {
   font-size: 18px;
-  color: #f39c12;
+  color: #bdc3c7;
+  font-style: italic;
+}
+.tip span {
+  font-size: 24px;
+  padding: 0.3rem;
 }
 .container h1,
 .container h3,
@@ -18,13 +22,27 @@
   height: 100vh;
   background-color: rgba(0, 0, 0, 0.5);
 }
+.card .card-text h4 {
+  color: #bdc3c7 !important;
+  box-shadow: 0px 0px 5px 2px rgba(189, 195, 199, 1);
+}
+h3 span {
+  color: #bdc3c7 !important;
+}
 footer {
   padding: 1rem;
   position: relative;
 }
 .providers {
+  width: 100%;
   display: flex;
   justify-content: space-around;
   position: absolute;
   animation: slide 2s linear;
+}
+.providers a:link,
+.providers a:visited {
+  color: #bdc3c7;
+  font-weight: 700;
+  text-decoration: none;
 }

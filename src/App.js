@@ -202,6 +202,8 @@ class App extends React.Component {
           description={this.state.description}
           weatherIcon={this.state.icon}
           tips={this.state.tips}
+          timezone={this.state.timezone}
+          localTime={this.state.localTime}
         />
       </div>
     );

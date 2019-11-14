@@ -5,18 +5,17 @@ const Weather = props => {
     <div className=" container">
       <div className="cards pt-4">
         <h1>{props.city}</h1>
-        <h5 className="icon_tip py-4 d-flex">
+        <div className="icon_tip py-4 d-flex">
           <i className={`wi ${props.weatherIcon} display-1`}></i>
           {tips(props.tips)}
-        </h5>
-
+        </div>
         {props.temp_celsius ? (
           <h1 className="py-2">Actual Temp {props.temp_celsius}&deg;</h1>
         ) : null}
         {/* {show max and min temp} */}
         {minmaxTemp(props.temp_max, props.temp_min)}
         {pressWind(props.pressure, props.wind)}
-        {riseSet(props.sunrise, props.sunset)}
+        {riseSet(props.sunrise, props.sunset, props.timezone, props.localTime)}
         <h4 className="py-3">{props.description}</h4>
         <div className="col-12">{footer(props.city)}</div>
       </div>
@@ -26,11 +25,13 @@ const Weather = props => {
 function tips(tips) {
   if (tips) {
     return (
-      <p className="tip col-6">
-        <span>&rdquo;</span>
-        {tips}
-        <span>&bdquo;</span>
-      </p>
+      <h5 className="tip col-6">
+        <p>
+          <span>&rdquo;</span>
+          {tips}
+          <span>&bdquo;</span>
+        </p>
+      </h5>
     );
   }
 }
@@ -55,7 +56,7 @@ function footer(city) {
     );
   }
 }
-function riseSet(sunrise, sunset) {
+function riseSet(sunrise, sunset, timezone, localTime) {
   if (sunrise && sunset) {
     return (
       <div className="card-deck ">
@@ -85,6 +86,22 @@ function riseSet(sunrise, sunset) {
           </div>
           <div className="card-text">
             <h4>{sunset}</h4>
+          </div>
+        </div>
+        <div className="card bg-transparent border-0 p-2">
+          <div className="card-title">
+            <h3>
+              Time
+              <img
+                ssrc="https://img.icons8.com/android/24/000000/time.png"
+                alt="time"
+              ></img>
+            </h3>
+          </div>
+          <div className="card-text">
+            <h4>
+              {localTime} (UTC+ {timezone})
+            </h4>
           </div>
         </div>
       </div>
