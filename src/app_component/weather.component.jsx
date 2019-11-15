@@ -2,21 +2,23 @@ import React from "react";
 import "./weather.style.css";
 const Weather = props => {
   return (
-    <div className=" container">
-      <div className="cards pt-4">
-        <h1>{props.city}</h1>
-        <div className="icon_tip py-4 d-flex">
+    <div className="wrapper container">
+      <div className="cards ">
+        <h1 className="description">
+          <p>{props.city}</p> <p>{props.description}</p>
+        </h1>
+        <div className="icon_tip  d-flex">
           <i className={`wi ${props.weatherIcon} display-1`}></i>
           {tips(props.tips)}
         </div>
         {props.temp_celsius ? (
-          <h1 className="py-2">Actual Temp {props.temp_celsius}&deg;</h1>
+          <h1>Actual Temp {props.temp_celsius}&deg;</h1>
         ) : null}
         {/* {show max and min temp} */}
         {minmaxTemp(props.temp_max, props.temp_min)}
         {pressWind(props.pressure, props.wind)}
         {riseSet(props.sunrise, props.sunset, props.timezone, props.localTime)}
-        <h4 className="py-3">{props.description}</h4>
+
         <div className="col-12">{footer(props.city)}</div>
       </div>
     </div>
@@ -65,7 +67,8 @@ function riseSet(sunrise, sunset, timezone, localTime) {
             <h3>
               Sunrise
               <img
-                src="https://img.icons8.com/office/30/000000/sunrise.png"
+                className="sunrise"
+                src="https://img.icons8.com/nolan/40/000000/smiling-sun.png"
                 alt="rise"
               ></img>
             </h3>
@@ -79,7 +82,8 @@ function riseSet(sunrise, sunset, timezone, localTime) {
             <h3>
               Sunset
               <img
-                src="https://img.icons8.com/cotton/40/000000/sunset--v4.png"
+                className="sunset"
+                src="https://img.icons8.com/nolan/40/000000/sad-sun.png"
                 alt="set"
               ></img>
             </h3>
@@ -93,7 +97,8 @@ function riseSet(sunrise, sunset, timezone, localTime) {
             <h3>
               Time
               <img
-                ssrc="https://img.icons8.com/android/24/000000/time.png"
+                className="time"
+                src="https://img.icons8.com/nolan/40/000000/time.png"
                 alt="time"
               ></img>
             </h3>
