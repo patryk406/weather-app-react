@@ -92,7 +92,12 @@ footer {
 
 @media (max-width: 576px) {
   body {
-    background-image: linear-gradient(60deg, #29323c 0%, #485563 100%);
+    background-image: linear-gradient(
+      to left,
+      #1e3c72 0%,
+      #1e3c72 1%,
+      #2a5298 100%
+    );
     overflow: visible;
   }
   .wrapper .container {
@@ -121,7 +126,12 @@ footer {
     flex-direction: column;
   }
   .card-deck {
-    background-image: linear-gradient(120deg, #29323c 0%, #485563 100%);
+    background-image: linear-gradient(
+      to left,
+      #1e3c72 0%,
+      #1e3c72 1%,
+      #2a5298 100%
+    );
     z-index: 3;
   }
   .col-12 {
