@@ -139,7 +139,12 @@ footer {
     width: 100vw;
   }
   .cards {
-    background: none;
+    background-image: linear-gradient(
+      to left,
+      #1e3c72 0%,
+      #1e3c72 1%,
+      #2a5298 100%
+    );
   }
   .display-1 {
     font-size: 3rem !important;

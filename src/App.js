@@ -43,6 +43,7 @@ class App extends React.Component {
       Clouds: "wi-day-fog"
     };
   }
+
   calcRise(sunrise) {
     const sunriseTime = new Date(sunrise * 1000).toLocaleTimeString();
     return sunriseTime;

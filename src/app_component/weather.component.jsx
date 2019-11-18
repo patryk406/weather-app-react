@@ -24,6 +24,7 @@ const Weather = props => {
     </div>
   );
 };
+
 function tips(tips) {
   if (tips) {
     return (
