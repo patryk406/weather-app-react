@@ -1,6 +1,6 @@
 import React from "react";
-import Weather from "./app_component/weather.component";
-import Form from "./app_component/form.component";
+import Weather from "./components/weather.component";
+import Form from "./components/form.component";
 import "./App.css";
 
 import "weather-icons/css/weather-icons.css";
