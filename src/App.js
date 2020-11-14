@@ -7,7 +7,6 @@ import "weather-icons/css/weather-icons.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 //api.openweathermap.org/data/2.5/weather?q=London
-const API_key = "e614a40be0d49993168759d8b8e25e37";
 
 class App extends React.Component {
   constructor() {
@@ -158,9 +157,10 @@ class App extends React.Component {
 
     const city = e.target.elements.city.value;
     const country = e.target.elements.country.value;
+    console.log(city, country)
     if (city && country) {
       const api_call = await fetch(
-        `http://api.openweathermap.org/data/2.5/weather?q=${city},${country}&appid=${API_key}`
+        `http://api.openweathermap.org/data/2.5/weather?q=${city},${country}&appid=${process.env.REACT_APP_API_KEY}`
       );
       // Waiting fo response from serv , setting properties to our data from feedback.
       const response = await api_call.json();
